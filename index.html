@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Quest - Find Your Perfect Graphics Card</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>    
+    <nav class="site-nav">
+        <div class="nav-left">
+            <a href="index.html" class="brand">GPU Quest</a>
+            <!-- Team Selector Dropdown -->
+            <div class="team-selector">
+                <select id="teamDropdown" class="team-dropdown">
+                    <option value="intel">Intel</option>
+                    <option value="amd" selected>AMD</option>
+                    <option value="nvidia">NVIDIA</option>
+                </select>
+            </div>
+        </div>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="pages/benefits.html">Benefits</a>
+            <a href="pages/toDoList.html">To-Do List</a>
+            <a href="pages/examples.html">Examples</a>
+        </div>
+    </nav>
+
+    <!-- Floating Team Selector (shown when scrolled away from navbar) -->
+    <div class="floating-team-selector" id="floatingTeamSelector">
+        <select id="floatingTeamDropdown" class="team-dropdown">
+            <option value="intel">Intel</option>
+            <option value="amd" selected>AMD</option>
+            <option value="nvidia">NVIDIA</option>
+        </select>
+    </div>
+
+    <main class="main">
+        <h1 class="page-title">Unlock Your Dream GPU</h1>        <section class="gpu-showcase">
+            <img src="images/9070 xt.webp" alt="PowerColor Red Devil GPU and Box">
+        </section>
+
+        <section class="about-section">
+            <h2>About GPU Quest</h2>
+            <p>This is a site where you can create a To-Do List in order to obtain all the requirements needed to get your desired GPU. To-Do lists can be saved so progression can be easily tracked. We have pages to see why you should use a To-Do List and examples of what GPU you would like to work towards.</p>
+            <p>Our mission is to simplify your journey to acquiring the perfect graphics card, making the process clear, organized, and motivating.</p>
+        </section>
+
+        <div class="grid-three">            
+            <section class="tile benefits-section">
+                <h3>Benefits</h3>
+                <img src="images/benefits.jpg" alt="Benefits">
+                <p>Tracking your progress, budgeting, and understanding prerequisites can significantly ease the GPU acquisition process.</p>
+            </section>
+
+            <section class="tile">
+                <h3>To-Do List</h3>
+                <img src="images/to do list.jpg" alt="To-Do List">
+                <p>Organize your tasks, from saving money to checking component compatibility, all in one place.</p>
+            </section>
+
+            <section class="tile example-gpus-section">
+                <h3>Example GPUs</h3>
+                <img src="images/gpu image.png" alt="RTX 4090">
+                <p>Explore high-performance graphics cards and set them as your ultimate goal.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        &copy; 2025 GPU Quest. All rights reserved.
+    </footer>
+
+    <script src="js/team-selector.js"></script>
+</body>
+</html>

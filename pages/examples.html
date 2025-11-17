@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Quest - Examples</title>    
+    <link rel="stylesheet" href="../css/examples.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="brand">GPU Quest</a>
+            <!-- Team Selector Dropdown -->
+            <div class="team-selector">
+                <select id="teamDropdown" class="team-dropdown">
+                    <option value="intel">Intel</option>
+                    <option value="amd" selected>AMD</option>
+                    <option value="nvidia">NVIDIA</option>
+                </select>
+            </div>
+        </div>
+        <div class="links">
+            <a href="../index.html">Home</a>
+            <a href="benefits.html">Benefits</a>
+            <a href="toDoList.html">To-Do List</a>
+            <a href="examples.html">Examples</a>
+        </div>
+    </nav>
+
+    <!-- Floating Team Selector (shown when scrolled away from navbar) -->
+    <div class="floating-team-selector" id="floatingTeamSelector">
+        <select id="floatingTeamDropdown" class="team-dropdown">
+            <option value="intel">Intel</option>
+            <option value="amd" selected>AMD</option>
+            <option value="nvidia">NVIDIA</option>
+        </select>
+    </div>
+
+    <main class="examples-main">
+        <header class="examples-header">
+            <h1>GPU Examples</h1>
+            <p class="examples-intro">Discover the perfect graphics card for your needs. Here are some excellent GPU options across different price ranges and performance tiers.</p>
+        </header>
+
+        <section class="brand-section intel-section">
+            <h2 class="brand-title">
+                <span class="brand-icon">🔷</span>
+                Intel Arc Series
+            </h2>
+            <div class="gpu-grid">
+                <div class="gpu-card">
+                    <h3 class="gpu-name">Arc A580</h3>
+                    <img src="/images/Intel Arc B580 Challenger 12GB OC(M1).png">
+                    <div class="gpu-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Brand:</span>
+                            <span class="spec-value">Intel</span>
+                        </div>
+                        <div class="spec-item price-highlight">
+                            <span class="spec-label">Price:</span>
+                            <span class="spec-value">€249.00</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Clock Speed:</span>
+                            <span class="spec-value">2670 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power Supply:</span>
+                            <span class="spec-value">600 W</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">PCIe:</span>
+                            <span class="spec-value">4.0 x8</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory:</span>
+                            <span class="spec-value">12 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">272 x 115 mm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gpu-card">
+                    <h3 class="gpu-name">Arc A570</h3>
+                    <img src="/images/Intel Arc B570 Challenger 10GB OC(M1).png">
+                    <div class="gpu-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Brand:</span>
+                            <span class="spec-value">Intel</span>
+                        </div>
+                        <div class="spec-item price-highlight">
+                            <span class="spec-label">Price:</span>
+                            <span class="spec-value">€249.00</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Clock Speed:</span>
+                            <span class="spec-value">2500 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power Supply:</span>
+                            <span class="spec-value">600 W</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">PCIe:</span>
+                            <span class="spec-value">4.0 x8</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory:</span>
+                            <span class="spec-value">10 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">272 x 115 mm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="brand-section amd-section">
+            <h2 class="brand-title">
+                <span class="brand-icon">🔴</span>
+                AMD Radeon Series
+            </h2>
+            <div class="gpu-grid">
+                <div class="gpu-card">
+                    <h3 class="gpu-name">Radeon RX 9060 XT</h3>
+                    <img src="/images/ASUS Prime Radeon RX 9060 XT 8GB GDDR6 OC Edition.png">
+                    <div class="gpu-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Brand:</span>
+                            <span class="spec-value">AMD</span>
+                        </div>
+                        <div class="spec-item price-highlight">
+                            <span class="spec-label">Price:</span>
+                            <span class="spec-value">€399.00</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Clock Speed:</span>
+                            <span class="spec-value">2530 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power Supply:</span>
+                            <span class="spec-value">550 W</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">PCIe:</span>
+                            <span class="spec-value">5.0 x16</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory:</span>
+                            <span class="spec-value">16 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">281 x 127 mm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gpu-card">
+                    <h3 class="gpu-name">Radeon RX 9070 XT</h3>
+                    <img src="/images/9070 xt.webp">
+                    <div class="gpu-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Brand:</span>
+                            <span class="spec-value">AMD</span>
+                        </div>
+                        <div class="spec-item price-highlight">
+                            <span class="spec-label">Price:</span>
+                            <span class="spec-value">€700.00</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Clock Speed:</span>
+                            <span class="spec-value">2970 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power Supply:</span>
+                            <span class="spec-value">750 W</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">PCIe:</span>
+                            <span class="spec-value">5.0 x16</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory:</span>
+                            <span class="spec-value">16 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">304 x 127 mm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gpu-card">
+                    <h3 class="gpu-name">Radeon RX 7900 XT</h3>
+                    <img src="/images/Radeon RX 7900 XT 20GB(M1).png">
+                    <div class="gpu-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Brand:</span>
+                            <span class="spec-value">AMD</span>
+                        </div>
+                        <div class="spec-item price-highlight">
+                            <span class="spec-label">Price:</span>
+                            <span class="spec-value">€900.00</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Clock Speed:</span>
+                            <span class="spec-value">2400 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power Supply:</span>
+                            <span class="spec-value">750 W</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">PCIe:</span>
+                            <span class="spec-value">4.0 x16</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory:</span>
+                            <span class="spec-value">20 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">276 x 110 mm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="brand-section nvidia-section">
+            <h2 class="brand-title">
+                <span class="brand-icon">🟢</span>
+                NVIDIA GeForce RTX Series
+            </h2>
+            <div class="gpu-grid">
+                <div class="gpu-card">
+                    <h3 class="gpu-name">RTX 5070 Ti</h3>
+                    <img src="/images/5070 ti.png">
+                    <div class="gpu-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Brand:</span>
+                            <span class="spec-value">NVIDIA</span>
+                        </div>
+                        <div class="spec-item price-highlight">
+                            <span class="spec-label">Price:</span>
+                            <span class="spec-value">€800.00</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Clock Speed:</span>
+                            <span class="spec-value">2452 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power Supply:</span>
+                            <span class="spec-value">750 W</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">PCIe:</span>
+                            <span class="spec-value">5.0 x16</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory:</span>
+                            <span class="spec-value">16 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">304 x 137 mm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gpu-card">
+                    <h3 class="gpu-name">RTX 5080</h3>
+                    <img src="/images/RTX5080-3QTR-Back-Left-small.png">
+                    <div class="gpu-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Brand:</span>
+                            <span class="spec-value">NVIDIA</span>
+                        </div>
+                        <div class="spec-item price-highlight">
+                            <span class="spec-label">Price:</span>
+                            <span class="spec-value">€1000.00</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Clock Speed:</span>
+                            <span class="spec-value">2600 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power Supply:</span>
+                            <span class="spec-value">850 W</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">PCIe:</span>
+                            <span class="spec-value">5.0 x16</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory:</span>
+                            <span class="spec-value">16 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">304 x 137 mm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gpu-card">
+                    <h3 class="gpu-name">RTX 5090</h3>
+                    <img src="/images/gpu image.png">
+                    <div class="gpu-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Brand:</span>
+                            <span class="spec-value">NVIDIA</span>
+                        </div>
+                        <div class="spec-item price-highlight">
+                            <span class="spec-label">Price:</span>
+                            <span class="spec-value">€1200.00</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Clock Speed:</span>
+                            <span class="spec-value">2800 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power Supply:</span>
+                            <span class="spec-value">1000 W</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">PCIe:</span>
+                            <span class="spec-value">5.0 x16</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory:</span>
+                            <span class="spec-value">16 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions:</span>
+                            <span class="spec-value">304 x 137 mm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        &copy; 2025 GPU Quest. All rights reserved.
+    </footer>
+
+    <script src="../js/team-selector.js"></script>
+</body>
+</html>

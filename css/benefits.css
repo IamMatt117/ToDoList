@@ -1,0 +1,469 @@
+/* Shared site styles and navbar styles */
+:root {
+  --nav-bg: #000000;
+  --nav-color: #fff;
+  --primary-red: #b30000;
+  --dark-red: #800000;
+  --text-color: #e0e0e0;
+  --card-bg: rgba(0, 0, 0, 0.1);
+  --card-border: rgba(255, 255, 255, 0.15);
+  --heading-font: 'Segoe UI', Arial, sans-serif;
+  
+  /* Brand Colors */
+  --intel-color: #0071c5;
+  --amd-color: #ed1c24;
+  --nvidia-color: #76b900;
+  
+  /* Dynamic background colors - default to AMD */
+  --current-brand-color: var(--amd-color);
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #000000 0%, var(--current-brand-color) 100%);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.5s ease;
+}
+
+/* Enhanced Navigation */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--nav-bg);
+  color: var(--nav-color);
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 100;
+}
+
+.site-nav .brand {
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  color: var(--current-brand-color);
+  flex-shrink: 0;
+}
+
+.site-nav .links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-nav a {
+  color: var(--nav-color);
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.site-nav a:hover {
+  background: var(--current-brand-color);
+  color: #fff;
+}
+
+@media (min-width: 480px) {
+  .site-nav {
+    padding: 0.8rem 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .site-nav .brand {
+    font-size: 1.3rem;
+  }
+  
+  .site-nav .links {
+    gap: 0.8rem;
+  }
+  
+  .site-nav a {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-nav {
+    padding: 0.8rem 2rem;
+  }
+  
+  .site-nav .brand {
+    font-size: 1.4rem;
+  }
+  
+  .site-nav .links {
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 479px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+  
+  .nav-left {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .site-nav .links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Benefits Page Specific Styles */
+.benefits-main {
+  flex: 1;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.benefits-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.benefits-header h1 {
+  font-size: 2.2rem;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin-bottom: 1rem;
+  font-family: var(--heading-font);
+  font-weight: 800;
+  word-wrap: break-word;
+  padding: 0 1rem;
+}
+
+.benefits-intro {
+  font-size: 1rem;
+  color: var(--text-color);
+  max-width: 90%;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.9;
+  padding: 0 1rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .benefits-main {
+    padding: 1.5rem;
+  }
+  
+  .benefits-header {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 0;
+  }
+  
+  .benefits-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .benefits-intro {
+    font-size: 1.1rem;
+    max-width: 600px;
+  }
+  
+  .benefits-grid {
+    gap: 1.8rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .benefits-main {
+    padding: 2rem;
+  }
+  
+  .benefits-header {
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+  }
+  
+  .benefits-header h1 {
+    font-size: 2.8rem;
+  }
+  
+  .benefits-intro {
+    font-size: 1.2rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .benefits-header h1 {
+    font-size: 3rem;
+  }
+  
+  .benefits-grid {
+    gap: 2.5rem;
+  }
+}
+
+.benefit-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--current-brand-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(214, 198, 198, 0.3);
+}
+
+.benefit-card:hover::before {
+  opacity: 1;
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.benefit-card h2 {
+  font-family: var(--heading-font);
+  color: var(--current-brand-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 2px solid var(--current-brand-color);
+  padding-bottom: 0.5rem;
+}
+
+.benefit-card p {
+  color: var(--text-color);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin: 0;
+  text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .benefits-main {
+    padding: 1rem;
+  }
+  
+  .benefits-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .benefits-intro {
+    font-size: 1.1rem;
+  }
+  
+  .benefit-card {
+    padding: 1.5rem;
+  }
+  
+  .benefit-icon {
+    font-size: 2rem;
+  }
+  
+  .benefit-card h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Team Dropdown - Navbar Integration */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.team-selector {
+  position: relative;
+  z-index: 100;
+}
+
+.team-dropdown {
+  background: linear-gradient(145deg, var(--card-bg), rgba(255, 255, 255, 0.05));
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  padding: 0.4rem 2rem 0.4rem 0.8rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  min-width: 80px;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.team-dropdown::after {
+  content: '';
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--current-brand-color);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.team-selector:hover .team-dropdown::after {
+  transform: translateY(-50%) scale(1.1);
+  border-top-color: #fff;
+}
+
+@media (min-width: 480px) {
+  .team-dropdown {
+    padding: 0.5rem 2.2rem 0.5rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .team-dropdown {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Floating Team Selector - appears when scrolled away from navbar */
+.floating-team-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.floating-team-selector.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 479px) {
+  .floating-team-selector {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+.team-dropdown:hover {
+  border-color: var(--current-brand-color);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  box-shadow: 
+    0 6px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(var(--current-brand-color), 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.team-dropdown:focus {
+  outline: none;
+  border-color: var(--current-brand-color);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  box-shadow: 
+    0 0 0 3px rgba(255, 255, 255, 0.15),
+    0 6px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(var(--current-brand-color), 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.team-dropdown:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.team-dropdown option {
+  background: var(--nav-bg);
+  color: var(--text-color);
+  padding: 0.6rem 1rem;
+  border: none;
+  font-weight: 500;
+}
+
+.team-dropdown option:hover,
+.team-dropdown option:checked {
+  background: var(--current-brand-color);
+  color: #fff;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--nav-bg);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}

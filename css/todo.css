@@ -1,0 +1,814 @@
+:root {
+  --nav-bg: #000000;
+  --nav-color: #fff;
+  
+  /* Brand-specific Colors */
+  --intel-primary: #3a86ff; /* Arc Blue */
+  --intel-secondary: #1e59c8;
+  --amd-primary: #cc0000; /* AMD Red */
+  --amd-secondary: #8c0000;
+  --nvidia-primary: #00b300; /* NVIDIA Green */
+  --nvidia-secondary: #078c07;
+  
+  /* Brand Colors for consistency with other pages */
+  --intel-color: #0071c5;
+  --amd-color: #ed1c24;
+  --nvidia-color: #76b900;
+  
+  /* Dynamic background colors - default to AMD */
+  --current-brand-color: var(--amd-color);
+  
+  /* Active UI Colors - Default to Intel for initial state */
+  --primary-color: var(--current-brand-color); 
+  --secondary-color: var(--current-brand-color);
+  
+  --text-color: #f0f0f0; 
+  --card-bg: rgba(255, 255, 255, 0.08); 
+  --card-border: rgba(255, 255, 255, 0.15);
+  --input-bg: rgba(0, 0, 0, 0.4); 
+  --input-border: rgba(255, 255, 255, 0.15); 
+  --heading-font: 'Segoe UI', Arial, sans-serif;
+  
+  --body-bg-dark: #5c0000;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #000000 0%, var(--current-brand-color) 100%);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.5s ease;
+}
+
+/* Enhanced Navigation */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--nav-bg);
+  color: var(--nav-color);
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 100;
+}
+
+.site-nav .brand {
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  color: var(--current-brand-color);
+  flex-shrink: 0;
+}
+
+.site-nav .links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-nav a {
+  color: var(--nav-color);
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.site-nav a:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+@media (min-width: 480px) {
+  .site-nav {
+    padding: 0.8rem 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .site-nav .brand {
+    font-size: 1.3rem;
+  }
+  
+  .site-nav .links {
+    gap: 0.8rem;
+  }
+  
+  .site-nav a {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-nav {
+    padding: 0.8rem 2rem;
+  }
+  
+  .site-nav .brand {
+    font-size: 1.4rem;
+  }
+  
+  .site-nav .links {
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 479px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+  
+  .nav-left {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .site-nav .links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }    /* --- MAIN CONTENT CARD --- */
+    .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 3rem 1rem 1rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
+}    @media (min-width: 480px) {
+        .content {
+            padding: 3.5rem 1.5rem 1.5rem 1.5rem;
+            width: calc(100% - 3rem);
+        }
+    }    @media (min-width: 768px) {
+        .content {
+            padding: 4rem 2rem 2rem 2rem;
+            width: calc(100% - 4rem);
+        }
+    }
+
+    h1 {
+        text-align: center;
+        color: var(--primary-color);
+        font-family: var(--heading-font);
+        font-weight: 700;
+        font-size: 2rem;
+        text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        transition: color 0.3s ease;
+    }
+
+    /* --- GPU BRAND & OPTION BUTTONS --- */
+    .gpu-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 25px 0;
+    }
+
+    /* Base style for all brand buttons */
+    .gpu-buttons button {
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+    .gpu-buttons button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    }
+
+    /* Brand-specific static colors for the main selection buttons */
+    #intel { background: var(--intel-primary); }
+    #intel:hover { background: var(--intel-secondary); }
+    #amd { background: var(--amd-primary); }
+    #amd:hover { background: var(--amd-secondary); }
+    #nvidia { background: var(--nvidia-primary); }
+    #nvidia:hover { background: var(--nvidia-secondary); }
+    
+    #gpu-options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px 0;
+    }
+    /* Style for the dynamically generated GPU option buttons */
+    #gpu-options button {
+        background-color: var(--input-bg);
+        color: var(--text-color);
+        border-radius: 5px;
+        /* The border color will reflect the active brand */
+        border: 1px solid var(--primary-color); 
+        padding: 6px 12px;
+        font-weight: 500;
+        transition: background-color 0.2s, transform 0.2s, border-color 0.2s;
+    }
+    /* Style for the selected GPU option - uses the active primary color */
+    #gpu-options .selected-gpu {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+    
+    #gpu-options button:hover {
+        transform: translateY(-2px);
+        background-color: rgba(0, 0, 0, 0.6);
+        border-color: var(--primary-color);
+    }
+
+
+    /* --- TASK INPUT & ADD BUTTON --- */
+    .task-input-wrapper {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    #taskInput {
+        flex-grow: 1;
+        padding: 10px 14px;
+        font-size: 16px;
+        border-radius: 6px;
+        background: var(--input-bg);
+        border: 1px solid var(--input-border);
+        color: var(--text-color);
+        outline: none;
+        transition: border-color .2s, box-shadow .2s;
+    }
+    #taskInput::placeholder { color: #888; }
+    #taskInput:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px var(--secondary-color);
+    }
+
+    .task-input-wrapper button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: background-color 0.2s;
+    }
+    .task-input-wrapper button:hover {
+        background: var(--secondary-color);
+    }
+
+    /* --- TASK LIST STYLING --- */
+    .task-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 15px;
+        margin: 10px 0;
+        background: var(--input-bg);
+        border: 1px solid var(--input-border);
+        border-radius: 8px;
+        transition: background-color 0.2s;
+    }
+    .task-item:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .task-item label {
+        flex: 1;
+        word-break: break-word;
+    }
+    .task-item.completed label {
+        text-decoration: line-through;
+        color: #888;
+    }
+
+    .task-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        accent-color: var(--primary-color);
+    }
+
+    .task-item .delete-btn {
+        background: #666;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: background-color 0.2s;
+    }
+    .task-item .delete-btn:hover {
+        background: var(--amd-primary);
+    }
+
+    /* --- GPU REQUIREMENTS BOX --- */
+    #requirements {
+        display: none;  
+        margin: 30px 0;
+        padding: 20px;
+        border: 1px solid var(--input-border);
+        border-radius: 8px;
+        background: var(--input-bg);
+    }
+    #requirements h3 {
+        margin-top: 0;
+        color: var(--primary-color);
+        border-bottom: 1px solid var(--secondary-color);
+        padding-bottom: 8px;
+        font-weight: 600;
+        transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    #requirements ul {
+        padding-left: 5px;
+        list-style: none;
+    }
+    #requirements li {
+        padding: 6px 0;
+    }
+
+/* Side Sections Container */
+.side-sections {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Requirements and Saved Lists - Side by Side */
+#requirements,
+.saved-lists-section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background: var(--input-bg);
+    min-height: 200px;
+}
+
+.saved-lists-section h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 8px;
+    font-weight: 600;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.save-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.save-controls input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    outline: none;
+    min-width: 150px;
+}
+
+.save-controls input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--secondary-color);
+}
+
+.save-controls button {
+    padding: 8px 16px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.save-controls button:hover {
+    background: var(--secondary-color);
+}
+
+.saved-lists-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.saved-list-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: calc(33.333% - 7px);
+    min-width: 180px;
+    max-width: 280px;
+}
+
+.saved-list-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.saved-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.saved-list-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.saved-list-date {
+    font-size: 0.7rem;
+    color: #888;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.saved-list-content {
+    width: 100%;
+    min-width: 0;
+}
+
+.saved-list-tasks {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 8px;
+}
+
+.delete-saved-list {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: background-color 0.2s;
+    align-self: flex-end;
+    width: 100%;
+    text-align: center;
+}
+
+.delete-saved-list:hover {
+    background: var(--amd-secondary);
+}
+
+.no-saved-lists {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .side-sections {
+        flex-direction: column;
+    }
+    
+    .save-controls {
+        flex-direction: column;
+    }
+    
+    .save-controls input {
+        min-width: auto;
+    }
+    
+    .saved-list-item {
+        width: 100%;
+        min-width: auto;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .saved-lists-container {
+        flex-direction: column;
+    }
+    
+    .saved-list-item {
+        width: 100%;
+    }
+}
+
+/* Task list base */
+#taskList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#taskList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--input-border, #ddd);
+    border-radius: 8px;
+    background: var(--input-bg, #fff);
+    margin-bottom: 8px;
+}
+
+/* Text */
+#taskList .task-text {
+    flex: 1 1 auto;
+    word-break: break-word;
+    color: var(--text-color, #222);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+#taskList .task-text:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Completed state: strike-through the text and dim it */
+#taskList li.completed .task-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Action buttons container */
+#taskList .task-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Buttons */
+#taskList .task-actions .complete-btn,
+#taskList .task-actions .delete-btn {
+    min-width: 32px;
+    height: 28px;
+    padding: 0 8px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Complete button style (uses brand secondary when available) */
+#taskList .task-actions .complete-btn {
+    background: var(--primary-color, #4CAF50);
+    color: #ffffff;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+#taskList .task-actions .complete-btn:hover {
+    background: var(--secondary-color, #45a049);
+    transform: scale(1.05);
+}
+
+/* Delete button style */
+#taskList .task-actions .delete-btn {
+    background: #ff4444;
+    color: white;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+#taskList .task-actions .delete-btn:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
+
+/* New List Button - Fixed position at bottom right */
+.new-list-btn {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    top: auto !important;
+    left: auto !important;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-list-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.new-list-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mobile adjustments for the new list button */
+@media (max-width: 768px) {
+    .new-list-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+/* Team Dropdown - Navbar Integration */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.team-selector {
+  position: relative;
+  z-index: 100;
+}
+
+.team-dropdown {
+  background: linear-gradient(145deg, var(--card-bg), rgba(255, 255, 255, 0.05));
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  padding: 0.4rem 2rem 0.4rem 0.8rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  min-width: 80px;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.team-dropdown::after {
+  content: '';
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--current-brand-color);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.team-selector:hover .team-dropdown::after {
+  transform: translateY(-50%) scale(1.1);
+  border-top-color: #fff;
+}
+
+@media (min-width: 480px) {
+  .team-dropdown {
+    padding: 0.5rem 2.2rem 0.5rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .team-dropdown {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Floating Team Selector - appears when scrolled away from navbar */
+.floating-team-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.floating-team-selector.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 479px) {
+  .floating-team-selector {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+.team-dropdown:hover {
+  border-color: var(--current-brand-color);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  box-shadow: 
+    0 6px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(var(--current-brand-color), 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.team-dropdown:focus {
+  outline: none;
+  border-color: var(--current-brand-color);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  box-shadow: 
+    0 0 0 3px rgba(255, 255, 255, 0.15),
+    0 6px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(var(--current-brand-color), 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.team-dropdown:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.team-dropdown option {
+  background: var(--nav-bg);
+  color: var(--text-color);
+  padding: 0.6rem 1rem;
+  border: none;
+  font-weight: 500;
+}
+
+.team-dropdown option:hover,
+.team-dropdown option:checked {
+  background: var(--current-brand-color);
+  color: #fff;
+}
