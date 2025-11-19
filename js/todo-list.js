@@ -1,4 +1,18 @@
 function showOptions(brand) {
+    // Set the active brand colors first
+    const root = document.documentElement;
+    const brandColorMap = {
+        'intel': { primary: 'var(--intel-primary)', secondary: 'var(--intel-secondary)' },
+        'amd': { primary: 'var(--amd-primary)', secondary: 'var(--amd-secondary)' },
+        'nvidia': { primary: 'var(--nvidia-primary)', secondary: 'var(--nvidia-secondary)' },
+    };
+    
+    const colors = brandColorMap[brand];
+    if (colors) {
+        root.style.setProperty('--primary-color', colors.primary);
+        root.style.setProperty('--secondary-color', colors.secondary);
+    }
+
     const req = document.getElementById('requirements');
     // hide requirements container when switching brands
     if (req) req.style.display = 'none';
@@ -14,29 +28,16 @@ function showOptions(brand) {
         options[brand].forEach(opt => {
             const btn = document.createElement('button');
             btn.textContent = opt;
-            btn.style.marginRight = '8px';
-            btn.style.cursor = 'pointer';
-
-            // Apply brand-specific styles and hover handlers
-            if (brand === 'intel') {
-                btn.style.background = 'var(--intel-primary)';
-                btn.style.color = 'white';
-                btn.onmouseover = () => btn.style.background = 'var(--intel-secondary)';
-                btn.onmouseout = () => btn.style.background = 'var(--intel-primary)';
-                btn.onclick = () => renderRequirements(opt);
-            } else if (brand === 'amd') {
-                btn.style.background = 'var(--amd-primary)';
-                btn.style.color = 'white';
-                btn.onmouseover = () => btn.style.background = 'var(--amd-secondary)';
-                btn.onmouseout = () => btn.style.background = 'var(--amd-primary)';
-                btn.onclick = () => renderRequirements(opt);
-            } else if (brand === 'nvidia') {
-                btn.style.background = 'var(--nvidia-primary)';
-                btn.style.color = 'white';
-                btn.onmouseover = () => btn.style.background = 'var(--nvidia-secondary)';
-                btn.onmouseout = () => btn.style.background = 'var(--nvidia-primary)';
-                btn.onclick = () => renderRequirements(opt);
-            }
+            btn.setAttribute('data-option', opt);
+            
+            // Set click handler to render requirements and manage active state
+            btn.onclick = () => {
+                // Remove selected-gpu class from all option buttons
+                container.querySelectorAll('button').forEach(b => b.classList.remove('selected-gpu'));
+                // Add selected-gpu class to clicked button
+                btn.classList.add('selected-gpu');
+                renderRequirements(opt);
+            };
 
             container.appendChild(btn);
         });
@@ -104,6 +105,9 @@ function renderRequirements(optionName){
     // Make the requirements container visible
     container.style.display = 'block';
 }
+
+// Global variable to track currently loaded list
+let currentListName = null;
 
 // Brand color management for GPU buttons
 document.addEventListener('DOMContentLoaded', () => {
@@ -190,9 +194,86 @@ function saveTodoList() {
     document.getElementById('listName').value = '';
     
     // Refresh displayed lists
+    displaySavedLists();    alert(`List "${listName}" saved successfully!`);
+}
+
+// Update the currently loaded list
+function updateCurrentList() {
+    if (!currentListName) {
+        alert('No list is currently loaded to update');
+        return;
+    }
+    
+    const taskList = document.getElementById('taskList');
+    
+    if (taskList.children.length === 0) {
+        alert('No tasks to save');
+        return;
+    }
+    
+    // Get all tasks
+    const tasks = [];
+    taskList.querySelectorAll('li').forEach(li => {
+        const taskText = li.querySelector('.task-text').textContent;
+        const isCompleted = li.classList.contains('completed');
+        tasks.push({ text: taskText, completed: isCompleted });
+    });
+    
+    // Create updated list object
+    const updatedList = {
+        name: currentListName,
+        tasks: tasks,
+        date: new Date().toLocaleString(),
+        timestamp: Date.now()
+    };
+    
+    // Get existing saved lists
+    let savedLists = JSON.parse(localStorage.getItem('savedTodoLists') || '[]');
+    
+    // Find and update the existing list
+    const existingIndex = savedLists.findIndex(list => list.name === currentListName);
+    if (existingIndex !== -1) {
+        savedLists[existingIndex] = updatedList;
+    } else {
+        // If for some reason the list doesn't exist, add it
+        savedLists.push(updatedList);
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('savedTodoLists', JSON.stringify(savedLists));
+    
+    // Refresh displayed lists
     displaySavedLists();
     
-    alert(`List "${listName}" saved successfully!`);
+    alert(`List "${currentListName}" updated successfully!`);
+}
+
+// Update the UI to show current list context
+function updateCurrentListUI() {
+    const currentListInfo = document.getElementById('currentListInfo');
+    const currentListNameDisplay = document.getElementById('currentListNameDisplay');
+    const updateButton = document.getElementById('updateCurrentListBtn');
+    
+    if (currentListName) {
+        // Show current list info
+        if (currentListInfo) {
+            currentListInfo.style.display = 'block';
+        }
+        if (currentListNameDisplay) {
+            currentListNameDisplay.textContent = currentListName;
+        }
+        if (updateButton) {
+            updateButton.style.display = 'inline-block';
+        }
+    } else {
+        // Hide current list info
+        if (currentListInfo) {
+            currentListInfo.style.display = 'none';
+        }
+        if (updateButton) {
+            updateButton.style.display = 'none';
+        }
+    }
 }
 
 // Display all saved lists
@@ -243,12 +324,17 @@ function loadSavedList(listName) {
     }
     
     // Clear current tasks
-    document.getElementById('taskList').innerHTML = '';
-    
-    // Add saved tasks
+    document.getElementById('taskList').innerHTML = '';    // Add saved tasks
     list.tasks.forEach(task => {
         addTask(task.text, task.completed);
     });
+    
+    // Set the current list context
+    currentListName = listName;
+    updateCurrentListUI();
+    
+    // Update progress bar after loading saved list
+    updateProgressBar();
     
     alert(`List "${listName}" loaded successfully!`);
 }
@@ -273,6 +359,9 @@ function toggleComplete(element) {
     const li = element.closest('li');
     if (!li) return;
     li.classList.toggle('completed');
+    
+    // Update progress bar after toggling completion
+    updateProgressBar();
 }
 
 // Delete the task's <li>
@@ -280,6 +369,9 @@ function deleteTask(btn) {
     const li = btn.closest('li');
     if (!li) return;
     li.remove();
+    
+    // Update progress bar after deleting task
+    updateProgressBar();
 }
 
 // Modified addTask function to accept pre-filled data
@@ -301,13 +393,14 @@ function addTask(taskText = null, isCompleted = false) {
             <button class="complete-btn" onclick="toggleComplete(this)">✓</button>
             <button class="delete-btn" onclick="deleteTask(this)">✕</button>
         </div>
-    `;
-    
-    taskList.appendChild(li);
+    `;    taskList.appendChild(li);
 
     if (!taskText) {
         taskInput.value = '';
     }
+    
+    // Update progress bar after adding task
+    updateProgressBar();
 }
 
 // Create new list function - clears all current tasks
@@ -342,15 +435,20 @@ function createNewList() {
         const requirements = document.getElementById('requirements');
         if (requirements) {
             requirements.style.display = 'none';
-        }
-        
-        // Hide GPU options if visible
+        }        // Hide GPU options if visible
         const gpuOptions = document.getElementById('gpu-options');
         if (gpuOptions) {
             gpuOptions.style.display = 'none';
         }
         
+        // Clear current list context
+        currentListName = null;
+        updateCurrentListUI();
+        
         alert('New list created! You can now start adding tasks.');
+        
+        // Update progress bar after creating new list
+        updateProgressBar();
     }
 }
 
@@ -366,9 +464,159 @@ function getUniqueListName(baseName, savedLists) {
     return name;
 }
 
+// Progress Bar Functions using HTML5 features
+function updateProgressBar() {
+    const taskList = document.getElementById('taskList');
+    const progressBar = document.getElementById('taskProgress');
+    const progressDetails = document.querySelector('.progress-details');
+    const progressContainer = document.querySelector('.progress-container');
+    
+    if (!taskList || !progressBar || !progressDetails) {
+        return;
+    }
+    
+    const totalTasks = taskList.children.length;
+    const completedTasks = taskList.querySelectorAll('li.completed').length;
+    const remainingTasks = totalTasks - completedTasks;
+    const progressPercentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+    
+    // Update HTML5 progress element
+    progressBar.value = progressPercentage;
+    progressBar.setAttribute('aria-valuenow', progressPercentage);
+    
+    // Update HTML5 data attributes
+    progressDetails.setAttribute('data-completed', completedTasks);
+    progressDetails.setAttribute('data-total', totalTasks);
+    
+    // Update text content using HTML5 semantic elements
+    const completedCountSpan = progressDetails.querySelector('.completed-count');
+    const totalCountSpan = progressDetails.querySelector('.total-count');
+    const progressPercentageSpan = progressDetails.querySelector('.progress-percentage');
+    const remainingCountSpan = progressDetails.querySelector('.remaining-count');
+    
+    if (completedCountSpan) completedCountSpan.textContent = completedTasks;
+    if (totalCountSpan) totalCountSpan.textContent = totalTasks;
+    if (progressPercentageSpan) progressPercentageSpan.textContent = progressPercentage;
+    if (remainingCountSpan) remainingCountSpan.textContent = remainingTasks;
+    
+    // Update progress bar fallback content for accessibility
+    const fallbackSpan = progressBar.querySelector('.progress-fallback');
+    if (fallbackSpan) {
+        fallbackSpan.textContent = `${progressPercentage}% complete`;
+    }
+    
+    // Add completion celebration effect using CSS3 animations
+    if (progressPercentage === 100 && totalTasks > 0) {
+        progressContainer.classList.add('completed');
+        // Remove the class after animation completes
+        setTimeout(() => {
+            progressContainer.classList.remove('completed');
+        }, 600);
+        
+        // Show completion notification using HTML5 features
+        showProgressNotification('🎉 All tasks completed! Great job!', 'success');
+    }
+    
+    // Update progress bar color based on completion percentage
+    updateProgressBarTheme(progressPercentage);
+}
+
+function updateProgressBarTheme(percentage) {
+    const progressBar = document.getElementById('taskProgress');
+    
+    if (!progressBar) return;
+    
+    // Use CSS custom properties to dynamically update colors
+    const root = document.documentElement;
+    
+    if (percentage === 100) {
+        // Completion theme - green
+        root.style.setProperty('--progress-primary', '#00ff88');
+        root.style.setProperty('--progress-secondary', '#00cc6a');
+    } else if (percentage >= 75) {
+        // High progress theme - brand colors with brightness boost
+        root.style.setProperty('--progress-primary', 'var(--primary-color)');
+        root.style.setProperty('--progress-secondary', 'var(--secondary-color)');
+    } else if (percentage >= 50) {
+        // Medium progress theme - standard brand colors
+        root.style.setProperty('--progress-primary', 'var(--primary-color)');
+        root.style.setProperty('--progress-secondary', 'var(--secondary-color)');
+    } else if (percentage > 0) {
+        // Low progress theme - muted brand colors
+        root.style.setProperty('--progress-primary', 'var(--primary-color)');
+        root.style.setProperty('--progress-secondary', 'var(--secondary-color)');
+    } else {
+        // No progress theme - neutral
+        root.style.setProperty('--progress-primary', 'rgba(255, 255, 255, 0.3)');
+        root.style.setProperty('--progress-secondary', 'rgba(255, 255, 255, 0.2)');
+    }
+}
+
+function showProgressNotification(message, type = 'info') {
+    // Create HTML5 notification using modern web APIs
+    const notification = document.createElement('div');
+    notification.className = `progress-notification ${type}`;
+    notification.setAttribute('role', 'alert');
+    notification.setAttribute('aria-live', 'polite');
+    notification.textContent = message;
+    
+    // Style the notification
+    Object.assign(notification.style, {
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        background: type === 'success' ? '#00ff88' : 'var(--primary-color)',
+        color: '#000',
+        padding: '1rem 1.5rem',
+        borderRadius: '8px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+        zIndex: '10000',
+        fontSize: '1rem',
+        fontWeight: '600',
+        transform: 'translateX(100%)',
+        transition: 'transform 0.3s ease',
+        maxWidth: '300px'
+    });
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Animate out and remove
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+function detectProgressSupport() {
+    // Feature detection for HTML5 progress element
+    const progressSupported = 'value' in document.createElement('progress');
+    
+    if (!progressSupported) {
+        document.body.classList.add('no-progress');
+        console.warn('HTML5 progress element not supported, using fallback');
+    }
+    
+    return { progressSupported };
+}
+
 // Initialize todo list functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     displaySavedLists();
+    
+    // Detect HTML5 feature support
+    detectProgressSupport();
+    
+    // Initialize progress bar
+    updateProgressBar();
     
     // Add enter key listener for task input
     const taskInput = document.getElementById('taskInput');

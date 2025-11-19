@@ -163,27 +163,54 @@ body {
     -webkit-backdrop-filter: blur(5px);
     width: calc(100% - 2rem);
     box-sizing: border-box;
-}    @media (min-width: 480px) {
-        .content {
-            padding: 3.5rem 1.5rem 1.5rem 1.5rem;
-            width: calc(100% - 3rem);
-        }
-    }    @media (min-width: 768px) {
-        .content {
-            padding: 4rem 2rem 2rem 2rem;
-            width: calc(100% - 4rem);
-        }
+}    /* Mobile-first responsive adjustments for content */
+@media (max-width: 480px) {
+    .content {
+        margin-top: 0.5rem;
+        padding: 1.5rem 0.75rem 1rem 0.75rem;
+        width: calc(100% - 1rem);
+        border-radius: 8px;
     }
+}
+
+@media (min-width: 480px) {
+    .content {
+        padding: 3.5rem 1.5rem 1.5rem 1.5rem;
+        width: calc(100% - 3rem);
+    }
+}
+
+@media (min-width: 768px) {
+    .content {
+        padding: 4rem 2rem 2rem 2rem;
+        width: calc(100% - 4rem);
+    }
+}
 
     h1 {
-        text-align: center;
-        color: var(--primary-color);
-        font-family: var(--heading-font);
-        font-weight: 700;
-        font-size: 2rem;
-        text-shadow: 0 0 10px rgba(0,0,0,0.5);
-        transition: color 0.3s ease;
+    text-align: center;
+    color: var(--primary-color);
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 2rem;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: color 0.3s ease;
+}
+
+/* Mobile typography adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
     }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+}
 
     /* --- GPU BRAND & OPTION BUTTONS --- */
     .gpu-buttons {
@@ -250,43 +277,88 @@ body {
 
 
     /* --- TASK INPUT & ADD BUTTON --- */
+.task-input-wrapper {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#taskInput {
+    flex-grow: 1;
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+#taskInput::placeholder { color: #888; }
+
+#taskInput:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--secondary-color);
+}
+
+.task-input-wrapper button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.task-input-wrapper button:hover {
+    background: var(--secondary-color);
+}
+
+/* Mobile optimizations for task input */
+@media (max-width: 768px) {
     .task-input-wrapper {
-        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 24px 0;
+    }
+    
+    #taskInput {
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+    
+    .task-input-wrapper button {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-input-wrapper {
         gap: 10px;
         margin: 20px 0;
     }
-
+    
     #taskInput {
-        flex-grow: 1;
-        padding: 10px 14px;
-        font-size: 16px;
-        border-radius: 6px;
-        background: var(--input-bg);
-        border: 1px solid var(--input-border);
-        color: var(--text-color);
-        outline: none;
-        transition: border-color .2s, box-shadow .2s;
+        padding: 14px;
+        font-size: 1rem;
+        border-radius: 8px;
     }
-    #taskInput::placeholder { color: #888; }
-    #taskInput:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px var(--secondary-color);
-    }
-
+    
     .task-input-wrapper button {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
-        transition: background-color 0.2s;
+        padding: 14px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
     }
-    .task-input-wrapper button:hover {
-        background: var(--secondary-color);
-    }
+}
 
     /* --- TASK LIST STYLING --- */
     .task-item {
@@ -387,6 +459,25 @@ body {
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
+.current-list-info {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.current-list-label {
+    color: #888;
+    margin-right: 8px;
+}
+
+.current-list-name {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 .save-controls {
     display: flex;
     gap: 10px;
@@ -420,6 +511,15 @@ body {
     font-weight: 500;
     transition: background-color 0.2s;
     white-space: nowrap;
+}
+
+#updateCurrentListBtn {
+    background: var(--secondary-color);
+    margin-left: 5px;
+}
+
+#updateCurrentListBtn:hover {
+    background: var(--primary-color);
 }
 
 .save-controls button:hover {
@@ -521,30 +621,93 @@ body {
 @media (max-width: 768px) {
     .side-sections {
         flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .saved-lists-section {
+        margin-top: 1rem;
     }
     
     .save-controls {
         flex-direction: column;
+        gap: 0.75rem;
     }
     
     .save-controls input {
         min-width: auto;
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    .save-controls button {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 1rem;
     }
     
     .saved-list-item {
         width: 100%;
         min-width: auto;
         max-width: none;
+        padding: 12px;
+    }
+    
+    .saved-list-name {
+        font-size: 1rem;
+    }
+    
+    .saved-list-tasks {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    
+    .delete-saved-list {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        margin-top: 8px;
     }
 }
 
 @media (max-width: 480px) {
     .saved-lists-container {
         flex-direction: column;
+        gap: 12px;
     }
     
     .saved-list-item {
         width: 100%;
+        padding: 10px;
+    }
+    
+    .saved-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-bottom: 8px;
+    }
+    
+    .saved-list-name {
+        font-size: 0.95rem;
+        white-space: normal;
+        word-break: break-word;
+    }
+    
+    .saved-list-date {
+        font-size: 0.75rem;
+        margin-left: 0;
+        align-self: flex-start;
+    }
+    
+    .saved-list-tasks {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .delete-saved-list {
+        padding: 10px;
+        font-size: 0.8rem;
+        border-radius: 6px;
     }
 }
 
@@ -635,6 +798,288 @@ body {
     transform: scale(1.05);
 }
 
+/* Progress Bar Section Styles using HTML5 and CSS3 features */
+.progress-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.progress-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.progress-title {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    font-family: var(--heading-font);
+}
+
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* HTML5 Progress Element Styling */
+.task-progress-bar {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+.task-progress-bar::-webkit-progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.task-progress-bar::-webkit-progress-value {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    animation: progressPulse 2s ease-in-out infinite alternate;
+}
+
+/* Firefox */
+.task-progress-bar::-moz-progress-bar {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+/* HTML5 Meter Element Styling */
+.task-meter {
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* WebKit meter styling */
+.task-meter::-webkit-meter-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.task-meter::-webkit-meter-optimum-value {
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.3), 
+        var(--primary-color)
+    );
+    border-radius: 6px;
+    transition: width 0.3s ease;
+}
+
+/* Firefox meter styling */
+.task-meter::-moz-meter-bar {
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.3), 
+        var(--primary-color)
+    );
+    border-radius: 6px;
+}
+
+/* Progress Details */
+.progress-details {
+    text-align: center;
+    width: 100%;
+}
+
+.progress-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.progress-percentage {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.completed-count, .total-count {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.progress-stats {
+    margin-top: 0.5rem;
+}
+
+.progress-remaining {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.remaining-count {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+/* Progress animations using CSS3 */
+@keyframes progressPulse {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 20px var(--primary-color);
+    }
+}
+
+@keyframes progressComplete {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Progress completion celebration effect */
+.progress-container.completed {
+    animation: progressComplete 0.6s ease-in-out;
+}
+
+.progress-container.completed .task-progress-bar::-webkit-progress-value {
+    background: linear-gradient(90deg, #00ff88, #00cc6a);
+    animation: progressPulse 1s ease-in-out 3;
+}
+
+/* Responsive design for progress bar */
+@media (max-width: 768px) {
+    .progress-section {
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+  
+    .progress-title {
+        font-size: 1.2rem;
+    }
+  
+    .task-progress-bar {
+        height: 24px; /* Increased for better touch interaction */
+        border-radius: 12px;
+    }
+  
+    .task-meter {
+        height: 12px;
+        border-radius: 6px;
+    }
+    
+    .progress-text {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    
+    .progress-percentage {
+        font-size: 1.1em;
+    }
+    
+    .progress-stats {
+        margin-top: 0.75rem;
+    }
+    
+    .progress-remaining {
+        font-size: 0.85rem;
+    }
+}
+
+/* Additional mobile optimizations for very small screens */
+@media (max-width: 480px) {
+    .progress-section {
+        margin: 0.75rem 0;
+        padding: 0.75rem;
+        border-radius: 8px;
+    }
+    
+    .progress-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .progress-container {
+        gap: 0.75rem;
+    }
+    
+    .task-progress-bar {
+        height: 28px; /* Even larger for small screens */
+        border-radius: 14px;
+    }
+    
+    .progress-text {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    
+    .progress-percentage {
+        font-size: 1.05em;
+        display: block;
+        margin-top: 0.25rem;
+    }
+    
+    .progress-stats {
+        margin-top: 0.5rem;
+    }
+    
+    .progress-remaining {
+        font-size: 0.8rem;
+    }
+    
+    /* Stack progress info vertically on very small screens */
+    .progress-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Fallback for browsers that don't support progress element */
+.progress-fallback {
+    display: none;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* Show fallback if progress element is not supported */
+.no-progress .progress-fallback {
+    display: inline-block;
+}
+
+.no-progress .task-progress-bar {
+    display: none;
+}
+
 /* New List Button - Fixed position at bottom right */
 .new-list-btn {
     position: fixed !important;
@@ -679,6 +1124,16 @@ body {
     }
 }
 
+@media (max-width: 480px) {
+    .new-list-btn {
+        bottom: 12px;
+        right: 12px;
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+}
+
 /* Team Dropdown - Navbar Integration */
 .nav-left {
   display: flex;
@@ -712,6 +1167,53 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
+/* Override Bootstrap dropdown button styles */
+.team-dropdown.dropdown-toggle {
+  background: linear-gradient(145deg, var(--card-bg), rgba(255, 255, 255, 0.05));
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  padding: 0.4rem 2rem 0.4rem 0.8rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  min-width: 80px;
+}
+
+.team-dropdown.dropdown-toggle:focus {
+  box-shadow: 
+    0 0 0 3px rgba(255, 255, 255, 0.15),
+    0 6px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(var(--current-brand-color), 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.team-dropdown.dropdown-toggle::after {
+  display: none; /* Hide Bootstrap's default arrow */
+}
+
+.team-dropdown::after,
+.team-dropdown.dropdown-toggle::before {
+  content: '';
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--current-brand-color);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
 
 .team-dropdown::after {
   content: '';
@@ -768,6 +1270,42 @@ body {
     top: 15px;
     right: 15px;
   }
+}
+
+/* Bootstrap dropdown menu styling */
+.team-dropdown-menu {
+  background: var(--nav-bg) !important;
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+}
+
+.team-dropdown-item {
+  background: transparent;
+  color: var(--text-color);
+  padding: 0.6rem 1rem;
+  border: none;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.team-dropdown-item:hover,
+.team-dropdown-item.active {
+  background: var(--current-brand-color);
+  color: #fff;
+}
+
+.team-dropdown-item:focus {
+  background: var(--current-brand-color);
+  color: #fff;
+  outline: none;
 }
 
 .team-dropdown:hover {

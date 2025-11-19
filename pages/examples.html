@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPU Quest - Examples</title>    
     <link rel="stylesheet" href="../css/examples.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="site-nav">
         <div class="nav-left">
-            <a href="../index.html" class="brand">GPU Quest</a>
-            <!-- Team Selector Dropdown -->
-            <div class="team-selector">
-                <select id="teamDropdown" class="team-dropdown">
-                    <option value="intel">Intel</option>
-                    <option value="amd" selected>AMD</option>
-                    <option value="nvidia">NVIDIA</option>
-                </select>
+            <a href="../index.html" class="brand">GPU Quest</a>            <!-- Team Selector Dropdown -->
+            <div class="team-selector dropdown">
+                <button class="team-dropdown dropdown-toggle" type="button" id="teamDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-selected="amd">
+                    AMD
+                </button>
+                <ul class="dropdown-menu team-dropdown-menu" aria-labelledby="teamDropdown">
+                    <li><a class="dropdown-item team-dropdown-item" href="#" data-value="intel">Intel</a></li>
+                    <li><a class="dropdown-item team-dropdown-item active" href="#" data-value="amd">AMD</a></li>
+                    <li><a class="dropdown-item team-dropdown-item" href="#" data-value="nvidia">NVIDIA</a></li>
+                </ul>
             </div>
         </div>
         <div class="links">
@@ -26,15 +30,6 @@
             <a href="examples.html">Examples</a>
         </div>
     </nav>
-
-    <!-- Floating Team Selector (shown when scrolled away from navbar) -->
-    <div class="floating-team-selector" id="floatingTeamSelector">
-        <select id="floatingTeamDropdown" class="team-dropdown">
-            <option value="intel">Intel</option>
-            <option value="amd" selected>AMD</option>
-            <option value="nvidia">NVIDIA</option>
-        </select>
-    </div>
 
     <main class="examples-main">
         <header class="examples-header">

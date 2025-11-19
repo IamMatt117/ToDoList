@@ -1,8 +1,6 @@
 // Team dropdown functionality
 document.addEventListener('DOMContentLoaded', function() {
     const teamDropdown = document.getElementById('teamDropdown');
-    const floatingTeamDropdown = document.getElementById('floatingTeamDropdown');
-    const floatingTeamSelector = document.getElementById('floatingTeamSelector');
     const navbar = document.querySelector('.site-nav');
     const root = document.documentElement;
     
@@ -23,10 +21,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Function to update dropdown button text and active state
+    function updateDropdownButton(button, value) {
+        const teamNames = {
+            'intel': 'Intel',
+            'amd': 'AMD',
+            'nvidia': 'NVIDIA'
+        };
+        
+        button.textContent = teamNames[value];
+        button.setAttribute('data-selected', value);
+        
+        // Update active state in dropdown menu
+        const dropdownMenu = button.nextElementSibling;
+        if (dropdownMenu) {
+            const items = dropdownMenu.querySelectorAll('.team-dropdown-item');
+            items.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-value') === value) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    }
+    
     // Function to sync dropdown values
     function syncDropdowns(selectedValue) {
-        teamDropdown.value = selectedValue;
-        floatingTeamDropdown.value = selectedValue;
+        if (teamDropdown) {
+            updateDropdownButton(teamDropdown, selectedValue);
+        }
         changeTeamColor(selectedValue);
     }
     
@@ -34,28 +57,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedTeam = localStorage.getItem('selectedTeam') || 'amd';
     syncDropdowns(savedTeam);
     
-    // Add event listeners for both dropdowns
-    teamDropdown.addEventListener('change', function() {
-        syncDropdowns(this.value);
-    });
-    
-    floatingTeamDropdown.addEventListener('change', function() {
-        syncDropdowns(this.value);
-    });
-    
-    // Floating team selector visibility on scroll
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const navbarHeight = navbar.offsetHeight;
-        
-        // Show floating selector when scrolled past navbar
-        if (scrollTop > navbarHeight) {
-            floatingTeamSelector.classList.add('show');
-        } else {
-            floatingTeamSelector.classList.remove('show');
+    // Add event listeners for dropdown items
+    function addDropdownItemListeners(dropdown) {
+        const dropdownMenu = dropdown.nextElementSibling;
+        if (dropdownMenu) {
+            const items = dropdownMenu.querySelectorAll('.team-dropdown-item');
+            items.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const selectedValue = this.getAttribute('data-value');
+                    syncDropdowns(selectedValue);
+                });
+            });
         }
-        
-        lastScrollTop = scrollTop;
-    });
+    }
+    
+    if (teamDropdown) {
+        addDropdownItemListeners(teamDropdown);
+    }
 });
