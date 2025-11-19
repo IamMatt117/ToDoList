@@ -130,8 +130,6 @@ This project welcomes contributions! Areas for potential enhancement:
 - Additional GPU models and manufacturers
 - Enhanced accessibility features
 - Mobile app version
-- Integration with GPU pricing APIs
-- Advanced filtering and comparison tools
 
 ## 📄 License
 
