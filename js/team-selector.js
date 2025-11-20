@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function changeTeamColour(team) {
         const Colour = brandColours[team];
         if (Colour) {
-            root.style.setProperty('--current-brand-Colour', Colour);
+            root.style.setProperty('--current-brand-Color', Colour);
             // Save selection to localStorage
             localStorage.setItem('selectedTeam', team);
         }

@@ -1,29 +1,29 @@
 /* Shared site styles and navbar styles */
 :root {
   --nav-bg: #000000;
-  --nav-Colour: #fff;
+  --nav-color: #fff;
   --primary-red: #b30000;
   --dark-red: #800000;
-  --text-Colour: #e0e0e0;
+  --text-color: #e0e0e0;
   --card-bg: rgba(255, 255, 255, 0.08);
   --card-border: rgba(255, 255, 255, 0.15);
   --heading-font: 'Segoe UI', Arial, sans-serif;
   
-  /* Brand Colours */
-  --intel-Colour: #0071c5;
-  --amd-Colour: #ed1c24;
-  --nvidia-Colour: #76b900;
+  /* Brand Colors */
+  --intel-color: #0071c5;
+  --amd-color: #ed1c24;
+  --nvidia-color: #76b900;
   
-  /* Dynamic background Colours - default to AMD */
-  --current-brand-Colour: var(--amd-Colour);
+  /* Dynamic background colors - default to AMD */
+  --current-brand-color: var(--amd-color);
 }
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #000000 0%, var(--current-brand-Colour) 100%);
-  Colour: var(--text-Colour) !important;
+  background: linear-gradient(135deg, #000000 0%, var(--current-brand-color) 100%);
+  color: var(--text-color) !important;
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -38,7 +38,7 @@ body {
   justify-content: space-between;
   gap: 1rem;
   background: var(--nav-bg);
-  Colour: var(--nav-Colour);
+  color: var(--nav-color);
   padding: 0.8rem 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -50,7 +50,7 @@ body {
   font-weight: 800;
   font-size: 1.2rem;
   letter-spacing: 0.05em;
-  Colour: var(--current-brand-Colour);
+  color: var(--current-brand-color);
   flex-shrink: 0;
 }
 
@@ -62,19 +62,19 @@ body {
 }
 
 .site-nav a {
-  Colour: var(--nav-Colour);
+  color: var(--nav-color);
   text-decoration: none;
   padding: 0.5rem 0.8rem;
   border-radius: 8px;
   white-space: nowrap;
-  transition: background 0.3s ease, Colour 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
   font-weight: 500;
   font-size: 0.9rem;
 }
 
 .site-nav a:hover {
-  background: var(--current-brand-Colour);
-  Colour: #fff;
+  background: var(--current-brand-color);
+  color: #fff;
 }
 
 @media (min-width: 480px) {
@@ -215,7 +215,7 @@ section:hover {
 
 h1, h2, h3 {
   font-family: var(--heading-font);
-  Colour: white !important;
+  color: white !important;
   margin-top: 0;
   margin-bottom: 1.2rem;
   font-weight: 700;
@@ -225,7 +225,7 @@ h1 {
   font-size: 2rem;
   text-align: center;
   grid-area: header;
-  Colour: #fff;
+  color: #fff;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
   margin: 0.5rem 0 1rem 0;
   padding: 0 1rem;
@@ -253,7 +253,7 @@ h1 {
 
 h2 {
   font-size: 2.2rem;
-  border-bottom: 2px solid var(--current-brand-Colour);
+  border-bottom: 2px solid var(--current-brand-color);
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
 }
@@ -265,7 +265,7 @@ h2 {
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
-  border-Colour: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
   padding: 1.5rem;
   text-align: center;
   grid-area: gpu-showcase;
@@ -300,7 +300,7 @@ h2 {
 
 .gpu-showcase .tagline {
   font-size: 1.1rem;
-  Colour: var(--text-Colour);
+  color: var(--text-color);
 }
 
 /* About Section */
@@ -312,7 +312,7 @@ h2 {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1rem;
-  Colour: var(--text-Colour);
+  color: var(--text-color);
 }
 
 /* Grid Three - Feature Cards */
@@ -381,10 +381,10 @@ h2 {
 }
 
 .grid-three .tile h3 {
-  Colour: white;
+  color: white;
   font-size: 1.3rem;
   margin-bottom: 0.8rem;
-  border-bottom: 2px solid var(--current-brand-Colour);
+  border-bottom: 2px solid var(--current-brand-color);
   padding-bottom: 0.4rem;
   width: 80%;
   flex-shrink: 0;
@@ -495,7 +495,7 @@ h2 {
   border: 2px solid var(--card-border);
   border-radius: 12px;
   padding: 0.4rem 2rem 0.4rem 0.8rem;
-  Colour: var(--text-Colour);
+  color: var(--text-color);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -520,7 +520,7 @@ h2 {
   border: 2px solid var(--card-border);
   border-radius: 12px;
   padding: 0.4rem 2rem 0.4rem 0.8rem;
-  Colour: var(--text-Colour);
+  color: var(--text-color);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -536,7 +536,7 @@ h2 {
   box-shadow: 
     0 0 0 3px rgba(255, 255, 255, 0.15),
     0 6px 25px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(var(--current-brand-Colour), 0.3),
+    0 0 20px rgba(var(--current-brand-color), 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -555,7 +555,7 @@ h2 {
   height: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 5px solid var(--current-brand-Colour);
+  border-top: 5px solid var(--current-brand-color);
   pointer-events: none;
   transition: all 0.3s ease;
 }
@@ -563,7 +563,7 @@ h2 {
 .team-selector:hover .team-dropdown::after,
 .team-selector:hover .team-dropdown.dropdown-toggle::before {
   transform: translateY(-50%) scale(1.1);
-  border-top-Colour: #fff;
+  border-top-color: #fff;
 }
 
 /* Mobile Team Dropdown Improvements */
@@ -614,23 +614,23 @@ h2 {
 
 .team-dropdown:hover,
 .team-dropdown.dropdown-toggle:hover {
-  border-Colour: var(--current-brand-Colour);
+  border-color: var(--current-brand-color);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   box-shadow: 
     0 6px 25px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(var(--current-brand-Colour), 0.2),
+    0 0 20px rgba(var(--current-brand-color), 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
 }
 
 .team-dropdown:focus {
   outline: none;
-  border-Colour: var(--current-brand-Colour);
+  border-color: var(--current-brand-color);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
   box-shadow: 
     0 0 0 3px rgba(255, 255, 255, 0.15),
     0 6px 25px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(var(--current-brand-Colour), 0.3),
+    0 0 20px rgba(var(--current-brand-color), 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
 }
@@ -658,7 +658,7 @@ h2 {
 
 .team-dropdown-item {
   background: transparent;
-  Colour: var(--text-Colour);
+  color: var(--text-color);
   padding: 0.8rem 1rem;
   border: none;
   font-weight: 500;
@@ -672,20 +672,20 @@ h2 {
 
 .team-dropdown-item:hover,
 .team-dropdown-item.active {
-  background: var(--current-brand-Colour);
-  Colour: #fff;
+  background: var(--current-brand-color);
+  color: #fff;
 }
 
 .team-dropdown-item:focus {
-  background: var(--current-brand-Colour);
-  Colour: #fff;
+  background: var(--current-brand-color);
+  color: #fff;
   outline: none;
 }
 
 /* Legacy styles for compatibility */
 .team-dropdown option {
   background: var(--nav-bg);
-  Colour: var(--text-Colour);
+  color: var(--text-color);
   padding: 0.6rem 1rem;
   border: none;
   font-weight: 500;
@@ -693,14 +693,14 @@ h2 {
 
 .team-dropdown option:hover,
 .team-dropdown option:checked {
-  background: var(--current-brand-Colour);
-  Colour: #fff;
+  background: var(--current-brand-color);
+  color: #fff;
 }
 
 /* Footer */
 .site-footer {
   background: var(--nav-bg);
-  Colour: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   text-align: center;
   padding: 1.5rem;
   margin-top: 3rem;
@@ -721,7 +721,7 @@ h2 {
 @media (max-width: 479px) {
   /* Improve touch interactions */
   * {
-    -webkit-tap-highlight-Colour: rgba(255, 255, 255, 0.1);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
   }
   
   /* Prevent horizontal scrolling */
@@ -731,13 +731,13 @@ h2 {
   
   /* Improve text selection on mobile */
   ::selection {
-    background: var(--current-brand-Colour);
-    Colour: white;
+    background: var(--current-brand-color);
+    color: white;
   }
   
   ::-moz-selection {
-    background: var(--current-brand-Colour);
-    Colour: white;
+    background: var(--current-brand-color);
+    color: white;
   }
   
   /* Disable hover effects on mobile for better performance */

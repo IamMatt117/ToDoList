@@ -126,12 +126,12 @@ function renderRequirements(optionName){
 // Global variable to track currently loaded list
 let currentListName = null;
 
-// Brand color management for GPU buttons
+// Brand colour management for GPU buttons
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.documentElement;
     const brandButtons = document.querySelectorAll('.gpu-buttons button');
     
-    // Set up a map to easily look up brand colors
+    // Set up a map to easily look up brand colours
     const brandColorMap = {
         'intel': { primary: 'var(--intel-primary)', secondary: 'var(--intel-secondary)' },
         'amd': { primary: 'var(--amd-primary)', secondary: 'var(--amd-secondary)' },
@@ -550,7 +550,7 @@ function updateProgressBarTheme(percentage) {
     
     if (!progressBar) return;
     
-    // Use CSS custom properties to dynamically update colors
+    // Use CSS custom properties to dynamically update colours
     const root = document.documentElement;
     
     if (percentage === 100) {
