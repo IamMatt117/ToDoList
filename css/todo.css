@@ -23,8 +23,9 @@
   --secondary-color: var(--current-brand-color);
   
   --text-color: #f0f0f0; 
-  --card-bg: rgba(255, 255, 255, 0.08); 
+  --card-bg: rgba(0, 0, 0, 0.08); 
   --card-border: rgba(255, 255, 255, 0.15);
+  --progress-container-bg: rgba(0,0,0,1);
   --input-bg: rgba(0, 0, 0, 0.4); 
   --input-border: rgba(255, 255, 255, 0.15); 
   --heading-font: 'Segoe UI', Arial, sans-serif;
@@ -800,7 +801,8 @@ body {
 
 /* Progress Bar Section Styles using HTML5 and CSS3 features */
 .progress-section {
-    background: var(--card-bg);
+
+    background: rgba(0,0,0,0.35) !important;
     border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 1.5rem;
@@ -837,14 +839,13 @@ body {
     height: 20px;
     border-radius: 10px;
     border: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     overflow: hidden;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
-/* WebKit browsers (Chrome, Safari, Edge) */
 .task-progress-bar::-webkit-progress-bar {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -856,13 +857,6 @@ body {
     border-radius: 10px;
     transition: width 0.5s ease;
     animation: progressPulse 2s ease-in-out infinite alternate;
-}
-
-/* Firefox */
-.task-progress-bar::-moz-progress-bar {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: 10px;
-    transition: width 0.5s ease;
 }
 
 /* HTML5 Meter Element Styling */
@@ -891,15 +885,6 @@ body {
     );
     border-radius: 6px;
     transition: width 0.3s ease;
-}
-
-/* Firefox meter styling */
-.task-meter::-moz-meter-bar {
-    background: linear-gradient(90deg, 
-        rgba(255, 255, 255, 0.3), 
-        var(--primary-color)
-    );
-    border-radius: 6px;
 }
 
 /* Progress Details */
@@ -1059,21 +1044,6 @@ body {
         flex-direction: column;
         gap: 0.5rem;
     }
-}
-
-/* Fallback for browsers that don't support progress element */
-.progress-fallback {
-    display: none;
-    background: var(--primary-color);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: 500;
-}
-
-/* Show fallback if progress element is not supported */
-.no-progress .progress-fallback {
-    display: inline-block;
 }
 
 .no-progress .task-progress-bar {
