@@ -92,9 +92,9 @@ Website/
 ### Brand-Specific Theming
 The application features dynamic theming that changes based on the selected GPU manufacturer:
 
-- **Intel**: Blue color scheme (#0071c5)
-- **AMD**: Red color scheme (#ed1c24) 
-- **NVIDIA**: Green color scheme (#76b900)
+- **Intel**: Blue Colour scheme (#0071c5)
+- **AMD**: Red Colour scheme (#ed1c24) 
+- **NVIDIA**: Green Colour scheme (#76b900)
 
 ### Responsive Design
 - **Mobile-First**: Optimized for mobile devices with progressive enhancement
@@ -107,7 +107,7 @@ The application features dynamic theming that changes based on the selected GPU 
 - **Semantic HTML**: Proper heading hierarchy and landmark elements
 - **ARIA Labels**: Screen reader support for interactive elements
 - **Keyboard Navigation**: Full keyboard accessibility for all features
-- **Color Contrast**: High contrast ratios for better readability
+- **Colour Contrast**: High contrast ratios for better readability
 - **Responsive Text**: Scalable fonts that work across devices
 
 ## 🔧 Development

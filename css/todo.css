@@ -1,8 +1,8 @@
 :root {
   --nav-bg: #000000;
-  --nav-color: #fff;
+  --nav-colour: #fff;
   
-  /* Brand-specific Colors */
+  /* Brand-specific Colours */
   --intel-primary: #3a86ff; /* Arc Blue */
   --intel-secondary: #1e59c8;
   --amd-primary: #cc0000; /* AMD Red */
@@ -10,19 +10,19 @@
   --nvidia-primary: #00b300; /* NVIDIA Green */
   --nvidia-secondary: #078c07;
   
-  /* Brand Colors for consistency with other pages */
-  --intel-color: #0071c5;
-  --amd-color: #ed1c24;
-  --nvidia-color: #76b900;
+  /* Brand Colours for consistency with other pages */
+  --intel-Colour: #0071c5;
+  --amd-Colour: #ed1c24;
+  --nvidia-Colour: #76b900;
   
-  /* Dynamic background colors - default to AMD */
-  --current-brand-color: var(--amd-color);
+  /* Dynamic background Colours - default to AMD */
+  --current-brand-Colour: var(--amd-Colour);
   
-  /* Active UI Colors - Default to Intel for initial state */
-  --primary-color: var(--current-brand-color); 
-  --secondary-color: var(--current-brand-color);
+  /* Active UI Colours - Default to Intel for initial state */
+  --primary-Colour: var(--current-brand-Colour); 
+  --secondary-Colour: var(--current-brand-Colour);
   
-  --text-color: #f0f0f0; 
+  --text-Colour: #f0f0f0; 
   --card-bg: rgba(255, 255, 255, 0.08); 
   --card-border: rgba(255, 255, 255, 0.15);
   --input-bg: rgba(0, 0, 0, 0.4); 
@@ -36,8 +36,8 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #000000 0%, var(--current-brand-color) 100%);
-  color: var(--text-color);
+  background: linear-gradient(135deg, #000000 0%, var(--current-brand-Colour) 100%);
+  Colour: var(--text-Colour);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -52,7 +52,7 @@ body {
   justify-content: space-between;
   gap: 1rem;
   background: var(--nav-bg);
-  color: var(--nav-color);
+  Colour: var(--nav-Colour);
   padding: 0.8rem 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   position: relative;
@@ -63,7 +63,7 @@ body {
   font-weight: 800;
   font-size: 1.2rem;
   letter-spacing: 0.05em;
-  color: var(--current-brand-color);
+  Colour: var(--current-brand-Colour);
   flex-shrink: 0;
 }
 
@@ -75,19 +75,19 @@ body {
 }
 
 .site-nav a {
-  color: var(--nav-color);
+  Colour: var(--nav-Colour);
   text-decoration: none;
   padding: 0.5rem 0.8rem;
   border-radius: 8px;
   white-space: nowrap;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, Colour 0.3s ease;
   font-weight: 500;
   font-size: 0.9rem;
 }
 
 .site-nav a:hover {
-  background: var(--primary-color);
-  color: #fff;
+  background: var(--primary-Colour);
+  Colour: #fff;
 }
 
 @media (min-width: 480px) {
@@ -189,12 +189,12 @@ body {
 
     h1 {
     text-align: center;
-    color: var(--primary-color);
+    Colour: var(--primary-Colour);
     font-family: var(--heading-font);
     font-weight: 700;
     font-size: 2rem;
     text-shadow: 0 0 10px rgba(0,0,0,0.5);
-    transition: color 0.3s ease;
+    transition: Colour 0.3s ease;
 }
 
 /* Mobile typography adjustments */
@@ -222,7 +222,7 @@ body {
 
     /* Base style for all brand buttons */
     .gpu-buttons button {
-        color: white;
+        Colour: white;
         border: none;
         padding: 10px 20px;
         font-weight: bold;
@@ -236,7 +236,7 @@ body {
         box-shadow: 0 6px 15px rgba(0,0,0,0.5);
     }
 
-    /* Brand-specific static colors for the main selection buttons */
+    /* Brand-specific static Colours for the main selection buttons */
     #intel { background: var(--intel-primary); }
     #intel:hover { background: var(--intel-secondary); }
     #amd { background: var(--amd-primary); }
@@ -253,26 +253,26 @@ body {
     }
     /* Style for the dynamically generated GPU option buttons */
     #gpu-options button {
-        background-color: var(--input-bg);
-        color: var(--text-color);
+        background-Colour: var(--input-bg);
+        Colour: var(--text-Colour);
         border-radius: 5px;
-        /* The border color will reflect the active brand */
-        border: 1px solid var(--primary-color); 
+        /* The border Colour will reflect the active brand */
+        border: 1px solid var(--primary-Colour); 
         padding: 6px 12px;
         font-weight: 500;
-        transition: background-color 0.2s, transform 0.2s, border-color 0.2s;
+        transition: background-Colour 0.2s, transform 0.2s, border-Colour 0.2s;
     }
-    /* Style for the selected GPU option - uses the active primary color */
+    /* Style for the selected GPU option - uses the active primary Colour */
     #gpu-options .selected-gpu {
-        background-color: var(--primary-color);
-        color: white;
-        border-color: var(--primary-color);
+        background-Colour: var(--primary-Colour);
+        Colour: white;
+        border-Colour: var(--primary-Colour);
     }
     
     #gpu-options button:hover {
         transform: translateY(-2px);
-        background-color: rgba(0, 0, 0, 0.6);
-        border-color: var(--primary-color);
+        background-Colour: rgba(0, 0, 0, 0.6);
+        border-Colour: var(--primary-Colour);
     }
 
 
@@ -290,32 +290,32 @@ body {
     border-radius: 6px;
     background: var(--input-bg);
     border: 1px solid var(--input-border);
-    color: var(--text-color);
+    Colour: var(--text-Colour);
     outline: none;
-    transition: border-color .2s, box-shadow .2s;
+    transition: border-Colour .2s, box-shadow .2s;
 }
 
-#taskInput::placeholder { color: #888; }
+#taskInput::placeholder { Colour: #888; }
 
 #taskInput:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px var(--secondary-color);
+    border-Colour: var(--primary-Colour);
+    box-shadow: 0 0 0 3px var(--secondary-Colour);
 }
 
 .task-input-wrapper button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background: var(--primary-color);
-    color: white;
+    background: var(--primary-Colour);
+    Colour: white;
     border: none;
     border-radius: 6px;
     font-weight: 600;
-    transition: background-color 0.2s;
+    transition: background-Colour 0.2s;
 }
 
 .task-input-wrapper button:hover {
-    background: var(--secondary-color);
+    background: var(--secondary-Colour);
 }
 
 /* Mobile optimizations for task input */
@@ -370,7 +370,7 @@ body {
         background: var(--input-bg);
         border: 1px solid var(--input-border);
         border-radius: 8px;
-        transition: background-color 0.2s;
+        transition: background-Colour 0.2s;
     }
     .task-item:hover {
         background: rgba(0, 0, 0, 0.5);
@@ -382,25 +382,25 @@ body {
     }
     .task-item.completed label {
         text-decoration: line-through;
-        color: #888;
+        Colour: #888;
     }
 
     .task-item input[type="checkbox"] {
         width: 18px;
         height: 18px;
         flex-shrink: 0;
-        accent-color: var(--primary-color);
+        accent-Colour: var(--primary-Colour);
     }
 
     .task-item .delete-btn {
         background: #666;
-        color: white;
+        Colour: white;
         border: none;
         padding: 6px 10px;
         border-radius: 4px;
         cursor: pointer;
         font-size: 12px;
-        transition: background-color 0.2s;
+        transition: background-Colour 0.2s;
     }
     .task-item .delete-btn:hover {
         background: var(--amd-primary);
@@ -417,11 +417,11 @@ body {
     }
     #requirements h3 {
         margin-top: 0;
-        color: var(--primary-color);
-        border-bottom: 1px solid var(--secondary-color);
+        Colour: var(--primary-Colour);
+        border-bottom: 1px solid var(--secondary-Colour);
         padding-bottom: 8px;
         font-weight: 600;
-        transition: color 0.3s ease, border-color 0.3s ease;
+        transition: Colour 0.3s ease, border-Colour 0.3s ease;
     }
     #requirements ul {
         padding-left: 5px;
@@ -452,16 +452,16 @@ body {
 
 .saved-lists-section h3 {
     margin-top: 0;
-    color: var(--primary-color);
-    border-bottom: 1px solid var(--secondary-color);
+    Colour: var(--primary-Colour);
+    border-bottom: 1px solid var(--secondary-Colour);
     padding-bottom: 8px;
     font-weight: 600;
-    transition: color 0.3s ease, border-color 0.3s ease;
+    transition: Colour 0.3s ease, border-Colour 0.3s ease;
 }
 
 .current-list-info {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--secondary-Colour);
     border-radius: 6px;
     padding: 8px 12px;
     margin-bottom: 15px;
@@ -469,12 +469,12 @@ body {
 }
 
 .current-list-label {
-    color: #888;
+    Colour: #888;
     margin-right: 8px;
 }
 
 .current-list-name {
-    color: var(--primary-color);
+    Colour: var(--primary-Colour);
     font-weight: 600;
 }
 
@@ -491,39 +491,39 @@ body {
     border-radius: 6px;
     background: var(--input-bg);
     border: 1px solid var(--input-border);
-    color: var(--text-color);
+    Colour: var(--text-Colour);
     outline: none;
     min-width: 150px;
 }
 
 .save-controls input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px var(--secondary-color);
+    border-Colour: var(--primary-Colour);
+    box-shadow: 0 0 0 2px var(--secondary-Colour);
 }
 
 .save-controls button {
     padding: 8px 16px;
-    background: var(--primary-color);
-    color: white;
+    background: var(--primary-Colour);
+    Colour: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
-    transition: background-color 0.2s;
+    transition: background-Colour 0.2s;
     white-space: nowrap;
 }
 
 #updateCurrentListBtn {
-    background: var(--secondary-color);
+    background: var(--secondary-Colour);
     margin-left: 5px;
 }
 
 #updateCurrentListBtn:hover {
-    background: var(--primary-color);
+    background: var(--primary-Colour);
 }
 
 .save-controls button:hover {
-    background: var(--secondary-color);
+    background: var(--secondary-Colour);
 }
 
 .saved-lists-container {
@@ -565,7 +565,7 @@ body {
 
 .saved-list-name {
     font-weight: 600;
-    color: var(--primary-color);
+    Colour: var(--primary-Colour);
     font-size: 0.9rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -575,7 +575,7 @@ body {
 
 .saved-list-date {
     font-size: 0.7rem;
-    color: #888;
+    Colour: #888;
     margin-left: 8px;
     flex-shrink: 0;
 }
@@ -587,20 +587,20 @@ body {
 
 .saved-list-tasks {
     font-size: 0.8rem;
-    color: var(--text-color);
+    Colour: var(--text-Colour);
     opacity: 0.8;
     margin-bottom: 8px;
 }
 
 .delete-saved-list {
-    background: var(--primary-color);
-    color: white;
+    background: var(--primary-Colour);
+    Colour: white;
     border: none;
     padding: 4px 8px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.7rem;
-    transition: background-color 0.2s;
+    transition: background-Colour 0.2s;
     align-self: flex-end;
     width: 100%;
     text-align: center;
@@ -612,7 +612,7 @@ body {
 
 .no-saved-lists {
     text-align: center;
-    color: #888;
+    Colour: #888;
     font-style: italic;
     padding: 20px;
 }
@@ -734,21 +734,21 @@ body {
 #taskList .task-text {
     flex: 1 1 auto;
     word-break: break-word;
-    color: var(--text-color, #222);
+    Colour: var(--text-Colour, #222);
     cursor: pointer;
     padding: 4px 8px;
     border-radius: 4px;
-    transition: background-color 0.2s ease;
+    transition: background-Colour 0.2s ease;
 }
 
 #taskList .task-text:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-Colour: rgba(255, 255, 255, 0.1);
 }
 
 /* Completed state: strike-through the text and dim it */
 #taskList li.completed .task-text {
     text-decoration: line-through;
-    color: #888;
+    Colour: #888;
 }
 
 /* Action buttons container */
@@ -776,20 +776,20 @@ body {
 
 /* Complete button style (uses brand secondary when available) */
 #taskList .task-actions .complete-btn {
-    background: var(--primary-color, #4CAF50);
-    color: #ffffff;
+    background: var(--primary-Colour, #4CAF50);
+    Colour: #ffffff;
     font-weight: bold;
     transition: all 0.2s ease;
 }
 #taskList .task-actions .complete-btn:hover {
-    background: var(--secondary-color, #45a049);
+    background: var(--secondary-Colour, #45a049);
     transform: scale(1.05);
 }
 
 /* Delete button style */
 #taskList .task-actions .delete-btn {
     background: #ff4444;
-    color: white;
+    Colour: white;
     font-weight: bold;
     transition: all 0.2s ease;
 }
@@ -816,7 +816,7 @@ body {
 }
 
 .progress-title {
-    color: var(--primary-color);
+    Colour: var(--primary-Colour);
     font-size: 1.4rem;
     font-weight: 600;
     margin: 0 0 1rem 0;
@@ -852,7 +852,7 @@ body {
 }
 
 .task-progress-bar::-webkit-progress-value {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--primary-Colour), var(--secondary-Colour));
     border-radius: 10px;
     transition: width 0.5s ease;
     animation: progressPulse 2s ease-in-out infinite alternate;
@@ -860,7 +860,7 @@ body {
 
 /* Firefox */
 .task-progress-bar::-moz-progress-bar {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--primary-Colour), var(--secondary-Colour));
     border-radius: 10px;
     transition: width 0.5s ease;
 }
@@ -887,7 +887,7 @@ body {
 .task-meter::-webkit-meter-optimum-value {
     background: linear-gradient(90deg, 
         rgba(255, 255, 255, 0.3), 
-        var(--primary-color)
+        var(--primary-Colour)
     );
     border-radius: 6px;
     transition: width 0.3s ease;
@@ -897,7 +897,7 @@ body {
 .task-meter::-moz-meter-bar {
     background: linear-gradient(90deg, 
         rgba(255, 255, 255, 0.3), 
-        var(--primary-color)
+        var(--primary-Colour)
     );
     border-radius: 6px;
 }
@@ -911,19 +911,19 @@ body {
 .progress-text {
     font-size: 1.1rem;
     font-weight: 500;
-    color: var(--text-color);
+    Colour: var(--text-Colour);
     display: block;
     margin-bottom: 0.5rem;
 }
 
 .progress-percentage {
-    color: var(--primary-color);
+    Colour: var(--primary-Colour);
     font-weight: 700;
     font-size: 1.2em;
 }
 
 .completed-count, .total-count {
-    color: var(--primary-color);
+    Colour: var(--primary-Colour);
     font-weight: 600;
 }
 
@@ -932,12 +932,12 @@ body {
 }
 
 .progress-remaining {
-    color: rgba(255, 255, 255, 0.7);
+    Colour: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
 }
 
 .remaining-count {
-    color: var(--secondary-color);
+    Colour: var(--secondary-Colour);
     font-weight: 500;
 }
 
@@ -947,7 +947,7 @@ body {
         box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
     }
     100% {
-        box-shadow: 0 0 20px var(--primary-color);
+        box-shadow: 0 0 20px var(--primary-Colour);
     }
 }
 
@@ -1064,8 +1064,8 @@ body {
 /* Fallback for browsers that don't support progress element */
 .progress-fallback {
     display: none;
-    background: var(--primary-color);
-    color: white;
+    background: var(--primary-Colour);
+    Colour: white;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-weight: 500;
@@ -1090,8 +1090,8 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: var(--primary-color);
-    color: white;
+    background: var(--primary-Colour);
+    Colour: white;
     border: none;
     font-size: 24px;
     cursor: pointer;
@@ -1104,7 +1104,7 @@ body {
 }
 
 .new-list-btn:hover {
-    background: var(--secondary-color);
+    background: var(--secondary-Colour);
     transform: scale(1.1);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
@@ -1152,7 +1152,7 @@ body {
   border: 2px solid var(--card-border);
   border-radius: 12px;
   padding: 0.4rem 2rem 0.4rem 0.8rem;
-  color: var(--text-color);
+  Colour: var(--text-Colour);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -1174,7 +1174,7 @@ body {
   border: 2px solid var(--card-border);
   border-radius: 12px;
   padding: 0.4rem 2rem 0.4rem 0.8rem;
-  color: var(--text-color);
+  Colour: var(--text-Colour);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -1190,7 +1190,7 @@ body {
   box-shadow: 
     0 0 0 3px rgba(255, 255, 255, 0.15),
     0 6px 25px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(var(--current-brand-color), 0.3),
+    0 0 20px rgba(var(--current-brand-Colour), 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -1209,7 +1209,7 @@ body {
   height: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 5px solid var(--current-brand-color);
+  border-top: 5px solid var(--current-brand-Colour);
   pointer-events: none;
   transition: all 0.3s ease;
 }
@@ -1225,14 +1225,14 @@ body {
   height: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 5px solid var(--current-brand-color);
+  border-top: 5px solid var(--current-brand-Colour);
   pointer-events: none;
   transition: all 0.3s ease;
 }
 
 .team-selector:hover .team-dropdown::after {
   transform: translateY(-50%) scale(1.1);
-  border-top-color: #fff;
+  border-top-Colour: #fff;
 }
 
 @media (min-width: 480px) {
@@ -1287,7 +1287,7 @@ body {
 
 .team-dropdown-item {
   background: transparent;
-  color: var(--text-color);
+  Colour: var(--text-Colour);
   padding: 0.6rem 1rem;
   border: none;
   font-weight: 500;
@@ -1298,34 +1298,34 @@ body {
 
 .team-dropdown-item:hover,
 .team-dropdown-item.active {
-  background: var(--current-brand-color);
-  color: #fff;
+  background: var(--current-brand-Colour);
+  Colour: #fff;
 }
 
 .team-dropdown-item:focus {
-  background: var(--current-brand-color);
-  color: #fff;
+  background: var(--current-brand-Colour);
+  Colour: #fff;
   outline: none;
 }
 
 .team-dropdown:hover {
-  border-color: var(--current-brand-color);
+  border-Colour: var(--current-brand-Colour);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   box-shadow: 
     0 6px 25px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(var(--current-brand-color), 0.2),
+    0 0 20px rgba(var(--current-brand-Colour), 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
 }
 
 .team-dropdown:focus {
   outline: none;
-  border-color: var(--current-brand-color);
+  border-Colour: var(--current-brand-Colour);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
   box-shadow: 
     0 0 0 3px rgba(255, 255, 255, 0.15),
     0 6px 25px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(var(--current-brand-color), 0.3),
+    0 0 20px rgba(var(--current-brand-Colour), 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
 }
@@ -1339,7 +1339,7 @@ body {
 
 .team-dropdown option {
   background: var(--nav-bg);
-  color: var(--text-color);
+  Colour: var(--text-Colour);
   padding: 0.6rem 1rem;
   border: none;
   font-weight: 500;
@@ -1347,6 +1347,6 @@ body {
 
 .team-dropdown option:hover,
 .team-dropdown option:checked {
-  background: var(--current-brand-color);
-  color: #fff;
+  background: var(--current-brand-Colour);
+  Colour: #fff;
 }

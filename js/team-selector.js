@@ -4,18 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.site-nav');
     const root = document.documentElement;
     
-    // Brand color mapping
-    const brandColors = {
+    // Brand Colour mapping
+    const brandColours = {
         'intel': '#0071c5',
         'amd': '#ed1c24',
         'nvidia': '#76b900'
     };
     
-    // Function to change background color
-    function changeTeamColor(team) {
-        const color = brandColors[team];
-        if (color) {
-            root.style.setProperty('--current-brand-color', color);
+    // Function to change background Colour
+    function changeTeamColour(team) {
+        const Colour = brandColours[team];
+        if (Colour) {
+            root.style.setProperty('--current-brand-Colour', Colour);
             // Save selection to localStorage
             localStorage.setItem('selectedTeam', team);
         }
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (teamDropdown) {
             updateDropdownButton(teamDropdown, selectedValue);
         }
-        changeTeamColor(selectedValue);
+        changeTeamColour(selectedValue);
     }
     
     // Load saved team selection or default to AMD

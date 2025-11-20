@@ -1,20 +1,21 @@
 function showOptions(brand) {
-    // Set the active brand colors first
+    // Update CSS variables on the :root element to change the theme
     const root = document.documentElement;
     const brandColorMap = {
         'intel': { primary: 'var(--intel-primary)', secondary: 'var(--intel-secondary)' },
         'amd': { primary: 'var(--amd-primary)', secondary: 'var(--amd-secondary)' },
         'nvidia': { primary: 'var(--nvidia-primary)', secondary: 'var(--nvidia-secondary)' },
     };
-    
+
     const colors = brandColorMap[brand];
     if (colors) {
+        // These values are CSS variable names so UI can pick up brand colors
         root.style.setProperty('--primary-color', colors.primary);
         root.style.setProperty('--secondary-color', colors.secondary);
     }
 
+    // When switching brands we hide any previously shown requirements block
     const req = document.getElementById('requirements');
-    // hide requirements container when switching brands
     if (req) req.style.display = 'none';
 
     const options = {
@@ -22,15 +23,21 @@ function showOptions(brand) {
         amd: ['Radeon RX 9060 XT', 'Radeon RX 9070 XT', 'Radeon RX 7900 XT'],
         nvidia: ['RTX 5070 TI', 'RTX 5080', 'RTX 5090']
     };
+
+    // Container where GPU option buttons are appended
     const container = document.getElementById('gpu-options');
     container.innerHTML = '';
+
     if (options[brand]) {
+        // Create one button per option and attach a click handler that
+        // highlights the selection and displays requirements for that model.
         options[brand].forEach(opt => {
             const btn = document.createElement('button');
             btn.textContent = opt;
             btn.setAttribute('data-option', opt);
-            
-            // Set click handler to render requirements and manage active state
+
+            // Click handler: remove previous selection, mark this button,
+            // then render the requirements checklist for the chosen option.
             btn.onclick = () => {
                 // Remove selected-gpu class from all option buttons
                 container.querySelectorAll('button').forEach(b => b.classList.remove('selected-gpu'));
@@ -41,17 +48,17 @@ function showOptions(brand) {
 
             container.appendChild(btn);
         });
-        container.style.display = 'flex';
-        } 
-        // Show requirements container when GPU option is selected
-        else {
-            container.style.display = 'none';
-            container.style.background = '';
-            const req = document.getElementById('requirements');
-            if (req) req.style.display = 'none'; // hide when no GPU options are shown
-        }
 
+        // Make the container visible using a flex layout
+        container.style.display = 'flex';
+    } else {
+        // No options for this brand: hide the container and requirements block
+        container.style.display = 'none';
+        container.style.background = '';
+        const reqEl = document.getElementById('requirements');
+        if (reqEl) reqEl.style.display = 'none';
     }
+}
 
 // Map option -> checklist items
 const requirementsMap = {
@@ -66,33 +73,42 @@ const requirementsMap = {
 };
 
 function renderRequirements(optionName){
-    const container = document.getElementById('requirements') || 
-    (function(){
-        // Create a new container if it doesn't exist
-        const el = document.createElement('div'); el.id = 'requirements';
+    // Ensure there is a container for requirements; if not, create one and
+    // insert it into the page near the main content/task input area.
+    const container = document.getElementById('requirements') || (function(){
+        const el = document.createElement('div');
+        el.id = 'requirements';
         const parent = document.querySelector('.content');
-        // Insert before the task input wrapper
+        // Insert before the task input wrapper so requirements appear above tasks
         parent.insertBefore(el, parent.querySelector('.task-input-wrapper'));
         return el;
     })();
+
+    // Clear previous requirements then render new title + list
     container.innerHTML = '';
-    // Create a title and list of requirements
     const title = document.createElement('h3');
     title.textContent = optionName + ' requirements';
     container.appendChild(title);
     const list = document.createElement('ul');
-    // resolve requirements by exact match or by substring match (e.g. 'Arc 580' -> 'Arc')
+
+    // Try an exact lookup in the requirementsMap. If not found, attempt a
+    // substring-based heuristic so similar names will still match known keys.
     let items = requirementsMap[optionName];
     if (!items) {
-        // try substring match
-        const key = Object.keys(requirementsMap).find(k => optionName.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(optionName.toLowerCase()));
+        const key = Object.keys(requirementsMap).find(k =>
+            optionName.toLowerCase().includes(k.toLowerCase()) ||
+            k.toLowerCase().includes(optionName.toLowerCase())
+        );
         if (key) items = requirementsMap[key];
     }
     if (!items) items = ['No requirements defined.'];
-    
+
+    // Build each requirement row. We use a <div> as the checkbox placeholder
+    // to allow flexible styling; the 'label' references the div's id for a11y.
     items.forEach((text, idx) => {
         const li = document.createElement('li');
         const cb = document.createElement('div');
+        // ID must be unique on the page, so compose from optionName + index.
         cb.id = `req-${optionName}-${idx}`;
         const label = document.createElement('label');
         label.htmlFor = cb.id;
@@ -101,8 +117,9 @@ function renderRequirements(optionName){
         li.appendChild(label);
         list.appendChild(li);
     });
+
     container.appendChild(list);
-    // Make the requirements container visible
+    // Reveal the requirements section after it's populated
     container.style.display = 'block';
 }
 
@@ -143,15 +160,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Save current todo list
+/**
+ * Save the currently visible task list into localStorage under a given name.
+ * The saved structure is an array of objects under key `savedTodoLists`.
+ * Each saved list looks like: { name, tasks: [{text, completed}], date, timestamp }
+ *
+ * If a list with the same name exists, user is asked to confirm overwrite.
+ */
 function saveTodoList() {
     const listName = document.getElementById('listName').value.trim();
     const taskList = document.getElementById('taskList');
-    
+
     if (!listName) {
         alert('Please enter a list name');
         return;
     }
-    
+
     if (taskList.children.length === 0) {
         alert('No tasks to save');
         return;
@@ -175,8 +199,8 @@ function saveTodoList() {
     
     // Get existing saved lists
     let savedLists = JSON.parse(localStorage.getItem('savedTodoLists') || '[]');
-    
-    // Check if name already exists
+
+    // If name exists, confirm before overwriting
     const existingIndex = savedLists.findIndex(list => list.name === listName);
     if (existingIndex !== -1) {
         if (!confirm(`A list named "${listName}" already exists. Overwrite it?`)) {
@@ -186,8 +210,8 @@ function saveTodoList() {
     } else {
         savedLists.push(savedList);
     }
-    
-    // Save to localStorage
+
+    // Persist updated lists and refresh UI
     localStorage.setItem('savedTodoLists', JSON.stringify(savedLists));
     
     // Clear input
